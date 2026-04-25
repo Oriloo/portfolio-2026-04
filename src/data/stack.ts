@@ -1,9 +1,9 @@
 import type { StackData } from './types'
 
 export const stackData: StackData = {
-    Languages: ['TypeScript', 'Python', 'Rust', 'Go', 'SQL'],
-    Frontend:  ['React', 'Next.js', 'Svelte', 'WebGL', 'Three.js'],
-    Backend:   ['Node', 'FastAPI', 'Postgres', 'Redis', 'gRPC'],
-    ML:        ['PyTorch', 'JAX', 'Transformers', 'CUDA', 'Triton', 'FAISS'],
-    Infra:     ['Docker', 'Kubernetes', 'Terraform', 'AWS', 'Cloudflare'],
+    Languages: ['TypeScript', 'Python', 'PHP', 'Go', 'SQL', 'C++', 'Java'],
+    Frontend:  ['React', 'Angular', 'Nuxt.js', 'Three.js'],
+    Backend:   ['Node', 'Laravel', 'Postgres', 'Redis'],
+    ML:        ['PyTorch', 'CUDA'],
+    Infra:     ['Docker', 'Kubernetes', 'CI/CD', 'OVH', 'Cloudflare'],
 }
