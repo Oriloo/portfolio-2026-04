@@ -46,8 +46,8 @@ export interface GithubRepo {
 }
 
 export interface ContactData {
-    email:    string
-    github:   string
-    twitter:  string
-    calendar: string
+    email:    string[]
+    github:   string[]
+    linkedIn: string[]
+    codepen:  string[]
 }
