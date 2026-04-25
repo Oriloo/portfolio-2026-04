@@ -11,7 +11,7 @@ export default function HeroSection() {
                     style={{fontSize: 'var(--fs-hero)'}}
                 >
                     Pol-Mattis<br/>
-                    <span className="italic text-muted">Harquet</span>
+                    <span className="italic text-muted">Harquet,</span>
                 </h1>
 
                 <p
@@ -19,35 +19,38 @@ export default function HeroSection() {
                     style={{fontSize: 'var(--fs-hero-sub)'}}
                 >
                     builder of web things &amp;<br/>
-                    trainer of{' '}
                     <span className="not-italic font-sans font-medium text-accent" style={{fontSize: '0.9em'}}>
-                        neural networks
-                    </span>.
+                        artificial intelligence
+                    </span>{' '}
+                    expert.
                 </p>
 
-                {/* Three-column bio grid */}
                 <div
                     className="grid grid-cols-1 gap-5 mt-6 pt-4 border-t border-ink md:grid-cols-3 md:gap-10 md:mt-[60px] md:pt-8">
                     <p className="font-serif text-[19px] leading-[1.45] text-pretty max-md:text-[15px]">
-                        Je construis des produits web de bout en bout et j&apos;entraîne des modèles de deep
-                        learning. Ce qui m&apos;intéresse : mettre de vrais modèles en prod, pas juste des
-                        notebooks. Je travaille autant sur l&apos;architecture système que sur les couches de
-                        données et d&apos;inférence.
+                        I build end-to-end web products and train deep learning models. What interests me is deploying
+                        real models into production, not just notebooks. I work on system architecture as well as data
+                        and inference layers.
                     </p>
 
                     <div>
                         <p className="font-mono text-[9px] tracking-widest uppercase text-muted">Currently</p>
                         <p className="font-serif italic text-[16px] leading-[1.4] mt-[10px] max-md:text-[14px]">
-                            Training a sketch-to-3D multimodal model. Freelancing for two early-stage startups.
-                            Writing more than last year.
+                            Training a sketch-to-3D multimodal model. I work part-time for a startup while continuing my
+                            studies in artificial intelligence. Writing more than last year.
                         </p>
                     </div>
 
                     <div>
                         <p className="font-mono text-[9px] tracking-widest uppercase text-muted">Selected press</p>
                         <p className="font-serif text-[15px] leading-[1.5] mt-[10px]">
-                            "Makes production deep-learning look easy — because he's been doing it for a decade."{' '}
-                            <em className="text-muted">— Hacker News, 2025</em>
+                            FR: "On peut en avoir peur ou pas mais si vous parlez de prise de contrôle du monde par les
+                            machines, je crois que nous dramatisons !"
+                            <br/>
+                            EN: "We can be afraid of it or not, but if you are talking about machines taking over the
+                            world, I think we are being overly dramatic!"
+                            <br/>
+                            <em className="text-muted">Yann Le Cun, 2022</em>
                         </p>
                     </div>
                 </div>
