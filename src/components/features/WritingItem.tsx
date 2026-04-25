@@ -15,9 +15,9 @@ export default function WritingItem({entry}: WritingItemProps) {
             )}>
                 {entry.tag}
             </span>
-            <span className="font-serif text-[18px] leading-[1.25] text-ink text-pretty max-md:text-[15px]">
+            <a href={entry.link} target="_blank" className="font-serif text-[18px] leading-[1.25] text-ink text-pretty max-md:text-[15px]">
                 {entry.t}
-            </span>
+            </a>
             <span className="font-mono text-[10px] text-muted text-right hidden md:block">
                 {entry.d}
             </span>

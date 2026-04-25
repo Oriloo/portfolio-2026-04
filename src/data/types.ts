@@ -36,6 +36,7 @@ export interface WritingEntry {
     t:   string
     d:   string
     tag: WritingTag
+    link: string
 }
 
 export interface GithubRepo {
