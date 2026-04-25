@@ -1,0 +1,88 @@
+import type { Project } from './types'
+
+export const projects: Project[] = [
+    {
+        id:    'p1',
+        title: 'Latent Sketch',
+        kind:  'Deep Learning',
+        year:  '2026',
+        role:  'Research & Eng',
+        stack: ['PyTorch', 'CUDA', 'FastAPI', 'Next.js'],
+        desc:  "Diffusion model fine-tuné pour la génération de sketchs architecturaux à partir d'annotations textuelles. Déployé avec un pipeline d'inférence distribué.",
+        metrics: [
+            { k: 'FID',     v: '14.2' },
+            { k: 'params',  v: '860M' },
+            { k: 'latency', v: '1.2s' },
+        ],
+    },
+    {
+        id:    'p2',
+        title: 'Orbit',
+        kind:  'Full Stack',
+        year:  '2025',
+        role:  'Lead eng',
+        stack: ['Next.js', 'tRPC', 'Postgres', 'Redis'],
+        desc:  "SaaS de gestion d'équipes distribuées. Architecture multi-tenant, real-time via WebSockets, 40k utilisateurs actifs.",
+        metrics: [
+            { k: 'DAU',    v: '40k'    },
+            { k: 'p99',    v: '85ms'   },
+            { k: 'uptime', v: '99.97%' },
+        ],
+    },
+    {
+        id:    'p3',
+        title: 'Whisper Router',
+        kind:  'Deep Learning',
+        year:  '2025',
+        role:  'Solo',
+        stack: ['Whisper', 'Triton', 'Python', 'Go'],
+        desc:  "Router d'inférence speech-to-text auto-scalable. Dispatche sur un pool de GPUs suivant la charge, queue priorisée par SLA.",
+        metrics: [
+            { k: 'req/s', v: '1.2k'  },
+            { k: 'GPUs',  v: '16'    },
+            { k: 'WER',   v: '4.8%'  },
+        ],
+    },
+    {
+        id:    'p4',
+        title: 'Nocturne',
+        kind:  'Full Stack',
+        year:  '2024',
+        role:  'Solo',
+        stack: ['SvelteKit', 'D1', 'Workers'],
+        desc:  "Lecteur d'articles longue-forme avec parsing IA automatique, annotations partagées et synchronisation offline-first.",
+        metrics: [
+            { k: 'users', v: '12k'  },
+            { k: 'edge',  v: '300+' },
+            { k: 'size',  v: '47kb' },
+        ],
+    },
+    {
+        id:    'p5',
+        title: 'Embed Atlas',
+        kind:  'Deep Learning',
+        year:  '2024',
+        role:  'Co-founder',
+        stack: ['PyTorch', 'FAISS', 'Rust', 'WebGL'],
+        desc:  "Visualiseur d'espaces latents haute dimension. Projection UMAP en streaming sur des corpus de 10M+ embeddings, navigable dans le navigateur.",
+        metrics: [
+            { k: 'points', v: '10M'    },
+            { k: 'fps',    v: '60'     },
+            { k: 'dims',   v: '1536→2' },
+        ],
+    },
+    {
+        id:    'p6',
+        title: 'Cartograph',
+        kind:  'Full Stack',
+        year:  '2023',
+        role:  'Tech lead',
+        stack: ['React', 'Mapbox', 'PostGIS', 'Node'],
+        desc:  "Outil de cartographie collaborative pour les ONG. Édition simultanée de couches géospatiales, versioning à la Git.",
+        metrics: [
+            { k: 'orgs',   v: '28'   },
+            { k: 'layers', v: '2.3k' },
+            { k: 'MRR',    v: '€24k' },
+        ],
+    },
+]
