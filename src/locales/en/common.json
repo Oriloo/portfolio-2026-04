@@ -1,0 +1,28 @@
+{
+  "folio": "Folio {{number}}",
+  "masthead": {
+    "title": "The Pol-Mattis Harquet Portfolio",
+    "location": "Nancy · FR",
+    "status": "currently in a work-study program"
+  },
+  "footer": {
+    "copyright": "© MMXXVI · Pol-Mattis Harquet"
+  },
+  "projectKinds": {
+    "Deep Learning": "Deep Learning",
+    "Full Stack": "Full Stack"
+  },
+  "stackCategories": {
+    "Languages": "Languages",
+    "Frontend": "Frontend",
+    "Backend": "Backend",
+    "ML": "Machine Learning",
+    "Infra": "Infra"
+  },
+  "contactLabels": {
+    "email": "email",
+    "github": "github",
+    "linkedIn": "linkedIn",
+    "codepen": "codepen"
+  }
+}

@@ -3,14 +3,14 @@ import type { ExperienceEntry } from './types'
 export const experience: ExperienceEntry[] = [
     {
         y:    '2025 - now',
-        role: 'Work-study Program ',
+        role: 'experience:passInterim.role',
         org:  'Pass Intérim',
-        note: 'Development of a Job Board + Implementation of AI-powered Features.',
+        note: 'experience:passInterim.note',
     },
     {
         y:    '2023',
-        role: 'Internship',
+        role: 'experience:raveneHospital.role',
         org:  'Ravenel Hospital',
-        note: 'System and Network Administration + Network Deployment.',
+        note: 'experience:raveneHospital.note',
     },
 ]

@@ -1,7 +1,9 @@
 import { clsx } from 'clsx'
+import { useTranslation } from 'react-i18next'
 import { useDigitClassifier } from '../../hooks/useDigitClassifier'
 
 export default function DigitClassifier() {
+    const { t } = useTranslation()
     const { canvasRef, probs, topDigit, hasContent, clearCanvas } = useDigitClassifier()
 
     return (
@@ -10,12 +12,12 @@ export default function DigitClassifier() {
             {/* Left — canvas */}
             <div className="flex flex-col gap-2">
                 <div className="flex justify-between items-center text-[10px] tracking-[0.12em] uppercase text-muted">
-                    <span>input · 28×28</span>
+                    <span>{t('home:playground.input')}</span>
                     <button
                         onClick={clearCanvas}
                         className="bg-transparent border border-ink/20 text-muted font-mono text-[9px] px-[7px] py-[3px] cursor-pointer tracking-[0.1em] hover:bg-ink hover:text-bg transition-colors"
                     >
-                        CLEAR
+                        {t('home:playground.clear')}
                     </button>
                 </div>
 
@@ -27,13 +29,13 @@ export default function DigitClassifier() {
                 <p className="text-[10px] tracking-[0.08em] text-muted min-h-[1.4em]">
                     {hasContent ? (
                         <>
-                            prediction:{' '}
+                            {t('home:playground.prediction')}{' '}
                             <span className="text-accent font-semibold">{topDigit}</span>
-                            {' · conf '}
+                            {' · '}{t('home:playground.conf')}{' '}
                             {(probs[topDigit] * 100).toFixed(1)}%
                         </>
                     ) : (
-                        <span className="opacity-65">draw a digit 0–9</span>
+                        <span className="opacity-65">{t('home:playground.drawPrompt')}</span>
                     )}
                 </p>
             </div>
@@ -41,7 +43,7 @@ export default function DigitClassifier() {
             {/* Right — softmax bars */}
             <div className="flex-1 flex flex-col gap-1 min-w-0">
                 <p className="text-[10px] tracking-[0.12em] uppercase text-muted mb-1">
-                    softmax output
+                    {t('home:playground.softmaxOutput')}
                 </p>
                 {probs.map((p, i) => {
                     const isTop = i === topDigit && hasContent

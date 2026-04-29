@@ -1,16 +1,19 @@
+import { useTranslation } from 'react-i18next'
 import ExperienceItem from '../features/ExperienceItem'
 import WritingItem from '../features/WritingItem'
 import OssItem from '../features/OssItem'
 import type { ExperienceEntry, WritingEntry, GithubRepo } from '../../data'
-import FolioLabel from "../ui/FolioLabel.tsx";
+import FolioLabel from '../ui/FolioLabel'
 
 interface AboutSectionProps {
     experience: ExperienceEntry[]
-    writing: WritingEntry[]
-    github: GithubRepo[]
+    writing:    WritingEntry[]
+    github:     GithubRepo[]
 }
 
-export default function AboutSection({experience, writing, github}: AboutSectionProps) {
+export default function AboutSection({ experience, writing, github }: AboutSectionProps) {
+    const { t } = useTranslation()
+
     return (
         <section className="
             px-8 py-[60px] border-b border-ink
@@ -23,17 +26,17 @@ export default function AboutSection({experience, writing, github}: AboutSection
             ">
                 {/* Experience */}
                 <div>
-                    <FolioLabel number="05" title="Chronology"/>
+                    <FolioLabel number="05" title={t('home:about.experienceFolioTitle')}/>
                     {experience.map((e, i) => <ExperienceItem key={i} entry={e}/>)}
                 </div>
 
                 {/* Writing + OSS */}
                 <div className="max-md:mt-6">
-                    <FolioLabel number="06" title="Writing"/>
+                    <FolioLabel number="06" title={t('home:about.writingFolioTitle')}/>
                     {writing.map((w, i) => <WritingItem key={i} entry={w}/>)}
 
                     <div className="mt-10">
-                        <FolioLabel number="07" title="Open source"/>
+                        <FolioLabel number="07" title={t('home:about.ossFolioTitle')}/>
                         {github.map((g, i) => <OssItem key={i} repo={g}/>)}
                     </div>
                 </div>

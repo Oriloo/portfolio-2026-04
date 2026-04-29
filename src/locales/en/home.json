@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "folioTitle": "An Introduction",
+    "taglinePart1": "builder of web things &",
+    "taglineAccent": "artificial intelligence",
+    "taglinePart2": "expert.",
+    "bio": "I build end-to-end web products and train deep learning models. What interests me is deploying real models into production, not just notebooks. I work on system architecture as well as data and inference layers.",
+    "currentlyLabel": "Currently",
+    "currently": "Training a sketch-to-3D multimodal model. I work part-time for a startup while continuing my studies in artificial intelligence. Writing more than last year.",
+    "pressLabel": "Selected press",
+    "quote": "\"We can be afraid of it or not, but if you are talking about machines taking over the world, I think we are being overly dramatic!\"",
+    "quoteAttribution": "Yann Le Cun, 2022"
+  },
+  "playground": {
+    "folioTitle": "A Small Convolutional Net",
+    "heading": "Draw a digit.",
+    "headingEmphasis": "Watch it think.",
+    "description": "A 120k-parameter convolutional network, trained on MNIST, running entirely in your browser via WebAssembly. No server round-trip. The same pattern I use to deploy production inference on edge devices.",
+    "params": "Params",
+    "accuracy": "Accuracy",
+    "latency": "Latency",
+    "input": "input · 28×28",
+    "clear": "CLEAR",
+    "drawPrompt": "draw a digit 0–9",
+    "prediction": "prediction:",
+    "conf": "conf",
+    "softmaxOutput": "softmax output"
+  },
+  "work": {
+    "folioTitle": "An Index of Recent Work",
+    "heading": "Six projects,",
+    "headingEmphasis": "in order."
+  },
+  "stackSection": {
+    "folioTitle": "Tools of the Trade"
+  },
+  "about": {
+    "experienceFolioTitle": "Chronology",
+    "writingFolioTitle": "Writing",
+    "ossFolioTitle": "Open source"
+  },
+  "contact": {
+    "folioTitle": "Correspondence",
+    "heading": "Write",
+    "headingEmphasis": "to me."
+  },
+  "project": {
+    "back": "← Back to index",
+    "metrics": "Metrics",
+    "abstract": "Abstract",
+    "stack": "Stack",
+    "previous": "← Previous",
+    "next": "Next →"
+  }
+}

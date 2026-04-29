@@ -1,14 +1,16 @@
 import { Link } from 'react-router-dom'
 import { clsx } from 'clsx'
+import { useTranslation } from 'react-i18next'
 import Rule from '../ui/Rule'
 import type { Project } from '../../data'
 
 interface ProjectCardProps {
     project: Project
-    index: number
+    index:   number
 }
 
-export default function ProjectCard({project, index}: ProjectCardProps) {
+export default function ProjectCard({ project, index }: ProjectCardProps) {
+    const { t } = useTranslation()
     const isML = project.kind === 'Deep Learning'
 
     return (
@@ -23,7 +25,7 @@ export default function ProjectCard({project, index}: ProjectCardProps) {
                 isML ? 'bg-ink text-bg' : 'bg-paper text-ink',
             )}>
                 <span>№&nbsp;{String(index + 1).padStart(3, '0')}</span>
-                <span className="text-center">{project.kind}</span>
+                <span className="text-center">{t(`common:projectKinds.${project.kind}`)}</span>
                 <span>{project.year}</span>
             </div>
 
@@ -33,7 +35,7 @@ export default function ProjectCard({project, index}: ProjectCardProps) {
                     {project.title}
                 </h3>
                 <p className="font-mono text-[10px] tracking-wider uppercase text-muted mt-2 max-md:text-[9px]">
-                    — {project.role}
+                    — {t(project.role)}
                 </p>
             </div>
 
@@ -41,9 +43,11 @@ export default function ProjectCard({project, index}: ProjectCardProps) {
 
             {/* Abstract */}
             <div className="px-5 py-[18px] max-md:px-[14px] max-md:py-3">
-                <p className="font-mono text-[9px] tracking-widest uppercase text-muted mb-2">Abstract</p>
+                <p className="font-mono text-[9px] tracking-widest uppercase text-muted mb-2">
+                    {t('home:project.abstract')}
+                </p>
                 <p className="font-serif italic text-[17px] leading-[1.45] text-pretty max-md:text-[14px]">
-                    {project.desc}
+                    {t(project.desc)}
                 </p>
             </div>
 
@@ -59,7 +63,7 @@ export default function ProjectCard({project, index}: ProjectCardProps) {
                         key={m.k}
                         className={clsx('px-[14px] py-4 max-md:px-[10px] max-md:py-[10px]', i < project.metrics.length - 1 && 'border-r border-ink')}
                     >
-                        <p className="font-mono text-[9px] tracking-wider uppercase text-muted">{m.k}</p>
+                        <p className="font-mono text-[9px] tracking-wider uppercase text-muted">{t(m.k)}</p>
                         <p className={clsx('font-serif text-[28px] leading-none mt-1 max-md:text-[22px]', isML ? 'text-accent' : 'text-ink')}>
                             {m.v}
                         </p>
