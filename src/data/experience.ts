@@ -10,7 +10,7 @@ export const experience: ExperienceEntry[] = [
     {
         y:    '2023',
         role: 'experience:raveneHospital.role',
-        org:  'Ravenel Hospital',
+        org:  'Centre Hospitalier de Ravenel',
         note: 'experience:raveneHospital.note',
     },
 ]
