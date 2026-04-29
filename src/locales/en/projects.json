@@ -1,4 +1,13 @@
 {
+  "p4": {
+    "role": "Design & Eng",
+    "desc": "Browser-based Pokémon card creator with real-time preview. Fully customizable (type, attacks, energy costs, rarity, stats) with PNG export at 4x resolution, JSON save/load, and bilingual UI (EN/FR).",
+    "metrics": {
+      "export": "export",
+      "types": "types",
+      "languages": "languages"
+    }
+  },
   "p3": {
     "role": "Research & Eng",
     "desc": "CNN built from scratch (no ML framework) to classify chest X-rays into 3 classes: Normal, Bacterial Pneumonia, Viral Pneumonia. Full pipeline: convolution, ReLU, pooling, GAP, CAM and FC layers, with data augmentation across 15,000 images.",

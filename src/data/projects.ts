@@ -16,6 +16,20 @@ export const projects: Project[] = [
         ],
     },
     {
+        id:    'p4',
+        title: 'PokéCardMaker',
+        kind:  'Full Stack',
+        year:  '2025',
+        role:  'projects:p4.role',
+        stack: ['HTML5', 'CSS3', 'JavaScript', 'dom-to-image'],
+        desc:  'projects:p4.desc',
+        metrics: [
+            { k: 'projects:p4.metrics.export',    v: '4x PNG' },
+            { k: 'projects:p4.metrics.types',     v: '10'     },
+            { k: 'projects:p4.metrics.languages', v: '2'      },
+        ],
+    },
+    {
         id:    'p2',
         title: 'VoirAnime DarkMod',
         kind:  'Full Stack',
@@ -25,7 +39,7 @@ export const projects: Project[] = [
         desc:  'projects:p2.desc',
         metrics: [
             { k: 'projects:p2.metrics.version', v: '2.1.5' },
-            { k: 'projects:p2.metrics.user',    v: '+1100'  },
+            { k: 'projects:p2.metrics.user',    v: '+1100' },
             { k: 'projects:p2.metrics.license', v: 'GPLv3' },
         ],
     },

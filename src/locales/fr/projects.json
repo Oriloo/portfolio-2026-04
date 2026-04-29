@@ -1,4 +1,13 @@
 {
+  "p4": {
+    "role": "Design & Ing.",
+    "desc": "Créateur de cartes Pokémon dans le navigateur avec aperçu en temps réel. Entièrement personnalisable (type, attaques, coûts en énergie, rareté, statistiques) avec export PNG en résolution 4x, sauvegarde/chargement JSON et interface bilingue (EN/FR).",
+    "metrics": {
+      "export": "export",
+      "types": "types",
+      "languages": "langues"
+    }
+  },
   "p3": {
     "role": "Recherche & Ing.",
     "desc": "CNN construit from scratch (sans framework ML) pour classifier des radiographies thoraciques en 3 classes : Normal, Pneumonie Bactérienne, Pneumonie Virale. Pipeline complet : convolution, ReLU, pooling, GAP, CAM et couches FC, avec augmentation de données sur 15 000 images.",
