@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import FolioLabel from '../ui/FolioLabel'
-import BauhausNet from '../ui/BauhausNet'
+import HeroCarousel from '../ui/HeroCarousel'
 
 export default function HeroSection() {
     const { t } = useTranslation()
@@ -10,8 +10,8 @@ export default function HeroSection() {
             <div className="max-w-[var(--max-w)] mx-auto">
                 <FolioLabel number="01" title={t('home:hero.folioTitle')}/>
 
-                {/* Identity + BauhausNet */}
-                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16">
+                {/* Identity + Carousel */}
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
                     <div>
                         <h1
                             className="font-serif leading-tighter tracking-display text-ink mt-6 max-md:mt-3"
@@ -33,9 +33,9 @@ export default function HeroSection() {
                         </p>
                     </div>
 
-                    <div className="hidden md:block relative min-h-[280px]">
-                        <div className="absolute inset-0">
-                            <BauhausNet/>
+                    <div className="hidden md:flex md:items-center">
+                        <div className="w-full h-[400px]">
+                            <HeroCarousel/>
                         </div>
                     </div>
                 </div>
