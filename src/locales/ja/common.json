@@ -1,6 +1,7 @@
 {
   "folio": "フォリオ {{number}}",
   "masthead": {
+    "yearsOfPractice_other": "{{count}}年の実践",
     "title": "Pol-Mattis Harquet ポートフォリオ",
     "location": "ナンシー · フランス",
     "status": "現在、交互学習プログラム中"

@@ -1,6 +1,8 @@
 {
   "folio": "Folio {{number}}",
   "masthead": {
+    "yearsOfPractice_one":   "{{count}} year of practice",
+    "yearsOfPractice_other": "{{count}} years of practice",
     "title": "The Pol-Mattis Harquet Portfolio",
     "location": "Nancy · FR",
     "status": "currently in a work-study program"

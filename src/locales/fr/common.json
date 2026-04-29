@@ -1,6 +1,8 @@
 {
   "folio": "Folio {{number}}",
   "masthead": {
+    "yearsOfPractice_one":   "{{count}} an de pratique",
+    "yearsOfPractice_other": "{{count}} ans de pratique",
     "title": "Le Portfolio de Pol-Mattis Harquet",
     "location": "Nancy · FR",
     "status": "actuellement en alternance"
