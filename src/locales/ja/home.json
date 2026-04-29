@@ -28,7 +28,7 @@
   },
   "work": {
     "folioTitle": "最近の作品一覧",
-    "heading": "6つのプロジェクト、",
+    "heading": "{{count}}件のプロジェクト、",
     "headingEmphasis": "順番に。"
   },
   "stackSection": {

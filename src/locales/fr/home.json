@@ -28,7 +28,7 @@
   },
   "work": {
     "folioTitle": "Un Index des Travaux Récents",
-    "heading": "Six projets,",
+    "heading": "{{count}} projets,",
     "headingEmphasis": "en ordre."
   },
   "stackSection": {

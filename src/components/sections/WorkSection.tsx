@@ -19,7 +19,7 @@ export default function WorkSection({ projects }: WorkSectionProps) {
                         className="font-serif leading-tighter tracking-heading max-md:mt-1.5"
                         style={{fontSize: 'var(--fs-work-h2)'}}
                     >
-                        {t('home:work.heading')} <em className="italic text-muted">{t('home:work.headingEmphasis')}</em>
+                        {t('home:work.heading', { count: projects.length })} <em className="italic text-muted">{t('home:work.headingEmphasis')}</em>
                     </h2>
                 </div>
 
