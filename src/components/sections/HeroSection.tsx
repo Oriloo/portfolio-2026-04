@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next'
 import FolioLabel from '../ui/FolioLabel'
+import BauhausNet from '../ui/BauhausNet'
 
 export default function HeroSection() {
     const { t } = useTranslation()
@@ -9,25 +10,37 @@ export default function HeroSection() {
             <div className="max-w-[var(--max-w)] mx-auto">
                 <FolioLabel number="01" title={t('home:hero.folioTitle')}/>
 
-                <h1
-                    className="font-serif leading-tighter tracking-display text-ink mt-6 max-md:mt-3"
-                    style={{fontSize: 'var(--fs-hero)'}}
-                >
-                    Pol-Mattis<br/>
-                    <span className="italic text-muted">Harquet,</span>
-                </h1>
+                {/* Identity + BauhausNet */}
+                <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16">
+                    <div>
+                        <h1
+                            className="font-serif leading-tighter tracking-display text-ink mt-6 max-md:mt-3"
+                            style={{fontSize: 'var(--fs-hero)'}}
+                        >
+                            Pol-Mattis<br/>
+                            <span className="italic text-muted">Harquet,</span>
+                        </h1>
 
-                <p
-                    className="font-serif italic tracking-title text-ink mt-6 leading-tight max-md:mt-[14px]"
-                    style={{fontSize: 'var(--fs-hero-sub)'}}
-                >
-                    {t('home:hero.taglinePart1')}<br/>
-                    <span className="not-italic font-sans font-medium text-accent" style={{fontSize: '0.9em'}}>
-                        {t('home:hero.taglineAccent')}
-                    </span>{' '}
-                    {t('home:hero.taglinePart2')}
-                </p>
+                        <p
+                            className="font-serif italic tracking-title text-ink mt-6 leading-tight max-md:mt-[14px]"
+                            style={{fontSize: 'var(--fs-hero-sub)'}}
+                        >
+                            {t('home:hero.taglinePart1')}<br/>
+                            <span className="not-italic font-sans font-medium text-accent" style={{fontSize: '0.9em'}}>
+                                {t('home:hero.taglineAccent')}
+                            </span>{' '}
+                            {t('home:hero.taglinePart2')}
+                        </p>
+                    </div>
 
+                    <div className="hidden md:block relative min-h-[280px]">
+                        <div className="absolute inset-0">
+                            <BauhausNet/>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Bio / Currently / Press */}
                 <div className="grid grid-cols-1 gap-5 mt-6 pt-4 border-t border-ink md:grid-cols-3 md:gap-10 md:mt-[60px] md:pt-8">
                     <p className="font-serif text-[19px] leading-[1.45] text-pretty max-md:text-[15px]">
                         {t('home:hero.bio')}
