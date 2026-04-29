@@ -1,0 +1,28 @@
+{
+  "folio": "フォリオ {{number}}",
+  "masthead": {
+    "title": "Pol-Mattis Harquet ポートフォリオ",
+    "location": "ナンシー · フランス",
+    "status": "現在、交互学習プログラム中"
+  },
+  "footer": {
+    "copyright": "© MMXXVI · Pol-Mattis Harquet"
+  },
+  "projectKinds": {
+    "Deep Learning": "ディープラーニング",
+    "Full Stack": "フルスタック"
+  },
+  "stackCategories": {
+    "Languages": "プログラミング言語",
+    "Frontend": "フロントエンド",
+    "Backend": "バックエンド",
+    "ML": "機械学習",
+    "Infra": "インフラ"
+  },
+  "contactLabels": {
+    "email": "メール",
+    "github": "GitHub",
+    "linkedIn": "LinkedIn",
+    "codepen": "CodePen"
+  }
+}

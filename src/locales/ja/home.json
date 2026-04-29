@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "folioTitle": "はじめに",
+    "taglinePart1": "ウェブ構築者 &",
+    "taglineAccent": "人工知能",
+    "taglinePart2": "の専門家。",
+    "bio": "エンドツーエンドのウェブプロダクトを構築し、ディープラーニングモデルを訓練しています。私が興味を持っているのは、ノートブックだけでなく、実際のモデルを本番環境にデプロイすることです。システムアーキテクチャからデータ・推論レイヤーまで幅広く取り組んでいます。",
+    "currentlyLabel": "現在",
+    "currently": "スケッチ-to-3Dのマルチモーダルモデルを訓練中。スタートアップでパートタイム勤務をしながら、人工知能の研究を続けています。昨年より多く書いています。",
+    "pressLabel": "注目の発言",
+    "quote": "「怖がるかどうかは別として、機械が世界を支配するという話をするなら、私たちは大げさに考えすぎていると思います。」",
+    "quoteAttribution": "ヤン・ルカン、2022年"
+  },
+  "playground": {
+    "folioTitle": "小さな畳み込みネットワーク",
+    "heading": "数字を描いてください。",
+    "headingEmphasis": "考える様子を見てください。",
+    "description": "MNISTで訓練された120kパラメータの畳み込みネットワークが、WebAssemblyを通じてブラウザ上で完全に動作します。サーバーへの往復なし。エッジデバイスへの本番推論デプロイに使用するのと同じパターンです。",
+    "params": "パラメータ",
+    "accuracy": "精度",
+    "latency": "レイテンシ",
+    "input": "入力 · 28×28",
+    "clear": "消去",
+    "drawPrompt": "0〜9の数字を描いてください",
+    "prediction": "予測：",
+    "conf": "確信度",
+    "softmaxOutput": "ソフトマックス出力"
+  },
+  "work": {
+    "folioTitle": "最近の作品一覧",
+    "heading": "6つのプロジェクト、",
+    "headingEmphasis": "順番に。"
+  },
+  "stackSection": {
+    "folioTitle": "使用技術"
+  },
+  "about": {
+    "experienceFolioTitle": "経歴",
+    "writingFolioTitle": "執筆",
+    "ossFolioTitle": "オープンソース"
+  },
+  "contact": {
+    "folioTitle": "お問い合わせ",
+    "heading": "お気軽に",
+    "headingEmphasis": "ご連絡ください。"
+  },
+  "project": {
+    "back": "← 一覧に戻る",
+    "metrics": "メトリクス",
+    "abstract": "概要",
+    "stack": "技術スタック",
+    "previous": "← 前のプロジェクト",
+    "next": "次のプロジェクト →"
+  }
+}
