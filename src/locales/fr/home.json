@@ -1,0 +1,55 @@
+{
+  "hero": {
+    "folioTitle": "Une Introduction",
+    "taglinePart1": "créateur de projets web &",
+    "taglineAccent": "intelligence artificielle",
+    "taglinePart2": "expert.",
+    "bio": "Je construis des produits web de bout en bout et entraîne des modèles de deep learning. Ce qui m'intéresse, c'est de déployer de vrais modèles en production, pas seulement des notebooks. Je travaille aussi bien sur l'architecture système que sur les couches de données et d'inférence.",
+    "currentlyLabel": "Actuellement",
+    "currently": "J'entraîne un modèle multimodal sketch-to-3D. Je travaille à mi-temps pour une startup tout en poursuivant mes études en intelligence artificielle. J'écris plus que l'année dernière.",
+    "pressLabel": "Presse sélectionnée",
+    "quote": "« On peut en avoir peur ou pas mais si vous parlez de prise de contrôle du monde par les machines, je crois que nous dramatisons ! »",
+    "quoteAttribution": "Yann Le Cun, 2022"
+  },
+  "playground": {
+    "folioTitle": "Un Petit Réseau Convolutif",
+    "heading": "Dessinez un chiffre.",
+    "headingEmphasis": "Regardez-le penser.",
+    "description": "Un réseau convolutif de 120k paramètres, entraîné sur MNIST, tournant entièrement dans votre navigateur via WebAssembly. Aucun aller-retour serveur. Le même schéma que j'utilise pour déployer de l'inférence en production sur des appareils embarqués.",
+    "params": "Paramètres",
+    "accuracy": "Précision",
+    "latency": "Latence",
+    "input": "entrée · 28×28",
+    "clear": "EFFACER",
+    "drawPrompt": "dessinez un chiffre 0–9",
+    "prediction": "prédiction :",
+    "conf": "conf",
+    "softmaxOutput": "sortie softmax"
+  },
+  "work": {
+    "folioTitle": "Un Index des Travaux Récents",
+    "heading": "Six projets,",
+    "headingEmphasis": "en ordre."
+  },
+  "stackSection": {
+    "folioTitle": "Outils du Métier"
+  },
+  "about": {
+    "experienceFolioTitle": "Chronologie",
+    "writingFolioTitle": "Écrits",
+    "ossFolioTitle": "Open source"
+  },
+  "contact": {
+    "folioTitle": "Correspondance",
+    "heading": "Écrivez",
+    "headingEmphasis": "moi."
+  },
+  "project": {
+    "back": "← Retour à l'index",
+    "metrics": "Métriques",
+    "abstract": "Résumé",
+    "stack": "Stack",
+    "previous": "← Précédent",
+    "next": "Suivant →"
+  }
+}

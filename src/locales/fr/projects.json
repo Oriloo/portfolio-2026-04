@@ -1,0 +1,29 @@
+{
+  "p3": {
+    "role": "Recherche & Ing.",
+    "desc": "CNN construit from scratch (sans framework ML) pour classifier des radiographies thoraciques en 3 classes : Normal, Pneumonie Bactérienne, Pneumonie Virale. Pipeline complet : convolution, ReLU, pooling, GAP, CAM et couches FC, avec augmentation de données sur 15 000 images.",
+    "metrics": {
+      "dataset": "jeu de données",
+      "classes": "classes",
+      "cnnBlocks": "blocs CNN"
+    }
+  },
+  "p2": {
+    "role": "Design & Ing.",
+    "desc": "Extension navigateur open-source pour VoirAnime ajoutant un thème sombre/clair, une architecture CSS modulaire, la sélection automatique du lecteur et un popup entièrement configurable. Disponible sur le Chrome Web Store et Firefox Add-ons.",
+    "metrics": {
+      "version": "version",
+      "user": "utilisateurs",
+      "license": "licence"
+    }
+  },
+  "p1": {
+    "role": "Recherche & Ing.",
+    "desc": "Système de gestion de jardin connecté avec contrôle automatique de l'arrosage basé sur des données capteurs en temps réel (température, humidité de l'air et du sol, luminosité). Dashboard avec graphiques en direct, historiques, seuils d'alerte, planification et export CSV. Pipeline IoT via MQTT/TTN avec capteurs LoRaWAN.",
+    "metrics": {
+      "sensors": "capteurs",
+      "dbTables": "tables BDD",
+      "iotProto": "proto IoT"
+    }
+  }
+}
