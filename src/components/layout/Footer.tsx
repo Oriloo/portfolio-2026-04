@@ -1,4 +1,7 @@
+import { useTranslation } from 'react-i18next'
+
 export default function Footer() {
+    const { t } = useTranslation()
     return (
         <footer className="
             border-t-2 border-ink bg-bg
@@ -6,7 +9,7 @@ export default function Footer() {
             flex justify-between
             font-mono text-[10px] tracking-[0.12em] uppercase text-muted max-md:text-[8px]
         ">
-            <span>© MMXXVI · Pol-Mattis Harquet</span>
+            <span>{t('common:footer.copyright')}</span>
         </footer>
     )
 }

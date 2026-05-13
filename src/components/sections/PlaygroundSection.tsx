@@ -1,17 +1,20 @@
+import { useTranslation } from 'react-i18next'
 import FolioLabel from '../ui/FolioLabel'
 import DigitClassifier from '../features/DigitClassifier'
 
 const STATS = [
-    { k: 'Params',   v: '120k'  },
-    { k: 'Accuracy', v: '98.4%' },
-    { k: 'Latency',  v: '4ms'   },
+    { key: 'params',   v: '120k'  },
+    { key: 'accuracy', v: '98.4%' },
+    { key: 'latency',  v: '4ms'   },
 ] as const
 
 export default function PlaygroundSection() {
+    const { t } = useTranslation()
+
     return (
         <section className="px-8 py-[60px] border-b border-ink bg-paper max-md:px-[14px] max-md:py-6">
             <div className="max-w-[var(--max-w)] mx-auto">
-                <FolioLabel number="02" title="A Small Convolutional Net"/>
+                <FolioLabel number="02" title={t('home:playground.folioTitle')}/>
 
                 <div className="grid grid-cols-1 gap-6 items-start md:grid-cols-[1.1fr_1fr] md:gap-[60px]">
 
@@ -21,21 +24,21 @@ export default function PlaygroundSection() {
                             className="font-serif leading-tight tracking-heading"
                             style={{fontSize: 'var(--fs-play-h2)'}}
                         >
-                            Draw a digit.<br/>
-                            <em className="italic text-muted">Watch it think.</em>
+                            {t('home:playground.heading')}<br/>
+                            <em className="italic text-muted">{t('home:playground.headingEmphasis')}</em>
                         </h2>
 
                         <p className="font-serif text-[19px] leading-[1.5] mt-6 max-w-[440px] text-pretty max-md:text-[14px] max-md:mt-[14px]">
-                            A 120k-parameter convolutional network, trained on MNIST, running entirely in your
-                            browser via WebAssembly. No server round-trip. The same pattern I use to deploy
-                            production inference on edge devices.
+                            {t('home:playground.description')}
                         </p>
 
                         {/* Stats */}
                         <div className="grid grid-cols-3 gap-px bg-ink border border-ink mt-8 max-md:mt-[18px]">
-                            {STATS.map(({k, v}) => (
-                                <div key={k} className="bg-paper px-4 py-[14px]">
-                                    <p className="font-mono text-[9px] tracking-wider uppercase text-muted">{k}</p>
+                            {STATS.map(({ key, v }) => (
+                                <div key={key} className="bg-paper px-4 py-[14px]">
+                                    <p className="font-mono text-[9px] tracking-wider uppercase text-muted">
+                                        {t(`home:playground.${key}`)}
+                                    </p>
                                     <p className="font-serif text-[32px] mt-1 max-md:text-[22px]">{v}</p>
                                 </div>
                             ))}

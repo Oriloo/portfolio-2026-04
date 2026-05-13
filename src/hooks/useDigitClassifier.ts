@@ -1,4 +1,8 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
+import * as ort from 'onnxruntime-web'
+
+ort.env.wasm.wasmPaths   = '/'
+ort.env.wasm.numThreads  = 1   // single-threaded — no SharedArrayBuffer required
 
 export interface UseDigitClassifierReturn {
     canvasRef:   React.RefObject<HTMLCanvasElement>
@@ -10,15 +14,25 @@ export interface UseDigitClassifierReturn {
 
 export function useDigitClassifier(): UseDigitClassifierReturn {
     const canvasRef  = useRef<HTMLCanvasElement>(null)
-    const [probs, setProbs]           = useState<number[]>(() => new Array(10).fill(0.1))
-    const [topDigit, setTopDigit]     = useState(-1)
+    const sessionRef = useRef<ort.InferenceSession | null>(null)
+
+    const [probs,      setProbs]      = useState<number[]>(() => new Array(10).fill(0.1))
+    const [topDigit,   setTopDigit]   = useState(-1)
     const [hasContent, setHasContent] = useState(false)
+
+    // Load the ONNX session once at mount
+    useEffect(() => {
+        ort.InferenceSession.create('/models/mnist-12.onnx', {
+            executionProviders: ['wasm'],
+        })
+            .then(s  => { sessionRef.current = s })
+            .catch(e => console.error('[MNIST] model load failed:', e))
+    }, [])
 
     const clearCanvas = useCallback(() => {
         const canvas = canvasRef.current
         if (!canvas) return
-        const ctx = canvas.getContext('2d')!
-        ctx.clearRect(0, 0, canvas.width, canvas.height)
+        canvas.getContext('2d')!.clearRect(0, 0, canvas.width, canvas.height)
         setProbs(new Array(10).fill(0.1))
         setTopDigit(-1)
         setHasContent(false)
@@ -66,17 +80,24 @@ export function useDigitClassifier(): UseDigitClassifierReturn {
             lastY = y
         }
 
-        function predict() {
-            const img = ctx.getImageData(0, 0, canvas!.width, canvas!.height).data
-            const W = canvas!.width, H = canvas!.height
-            let minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9, total = 0
+        async function predict() {
+            const session = sessionRef.current
+            if (!session) return
 
+            const W    = canvas!.width
+            const H    = canvas!.height
+            const data = ctx.getImageData(0, 0, W, H).data
+
+            // Bounding box of drawn pixels (alpha > 30)
+            let minX = W, maxX = 0, minY = H, maxY = 0, total = 0
             for (let y = 0; y < H; y++) {
                 for (let x = 0; x < W; x++) {
-                    if (img[(y * W + x) * 4 + 3] > 30) {
+                    if (data[(y * W + x) * 4 + 3] > 30) {
                         total++
-                        if (x < minX) minX = x; if (x > maxX) maxX = x
-                        if (y < minY) minY = y; if (y > maxY) maxY = y
+                        if (x < minX) minX = x
+                        if (x > maxX) maxX = x
+                        if (y < minY) minY = y
+                        if (y > maxY) maxY = y
                     }
                 }
             }
@@ -89,81 +110,73 @@ export function useDigitClassifier(): UseDigitClassifierReturn {
             }
             setHasContent(true)
 
-            const bw = Math.max(1, maxX - minX)
-            const bh = Math.max(1, maxY - minY)
-            const aspect  = bw / bh
-            const density = total / (bw * bh)
-            const cx = (minX + maxX) / 2
-            const cy = (minY + maxY) / 2
-            let tL = 0, tT = 0, center = 0
+            // White-on-transparent source from alpha channel
+            const bw  = maxX - minX + 1
+            const bh  = maxY - minY + 1
+            const src = document.createElement('canvas')
+            src.width  = W
+            src.height = H
+            const srcCtx  = src.getContext('2d')!
+            const srcData = srcCtx.createImageData(W, H)
+            for (let i = 0; i < data.length; i += 4) {
+                srcData.data[i]     = 255
+                srcData.data[i + 1] = 255
+                srcData.data[i + 2] = 255
+                srcData.data[i + 3] = data[i + 3]
+            }
+            srcCtx.putImageData(srcData, 0, 0)
 
-            for (let y = minY; y <= maxY; y++) {
-                for (let x = minX; x <= maxX; x++) {
-                    if (img[(y * W + x) * 4 + 3] > 30) {
-                        if (x < cx) tL++
-                        if (y < cy) tT++
-                        if (Math.hypot(x - cx, y - cy) < Math.min(bw, bh) * 0.18) center++
-                    }
-                }
+            // Scale into 20×20 centered in 28×28 (MNIST-style 4 px padding)
+            const scale = 20 / Math.max(bw, bh)
+            const dw    = Math.round(bw * scale)
+            const dh    = Math.round(bh * scale)
+            const dx    = Math.round((28 - dw) / 2)
+            const dy    = Math.round((28 - dh) / 2)
+
+            const mnist    = document.createElement('canvas')
+            mnist.width    = 28
+            mnist.height   = 28
+            const mnistCtx = mnist.getContext('2d')!
+            mnistCtx.fillStyle = '#000'
+            mnistCtx.fillRect(0, 0, 28, 28)
+            mnistCtx.drawImage(src, minX, minY, bw, bh, dx, dy, dw, dh)
+
+            // Float32 input [1, 1, 28, 28] — values in [0, 1]
+            const pixels = mnistCtx.getImageData(0, 0, 28, 28).data
+            const input  = new Float32Array(28 * 28)
+            for (let i = 0; i < 28 * 28; i++) {
+                input[i] = pixels[i * 4] / 255
             }
 
-            const topR    = tT / total
-            const leftR   = tL / total
-            const centerR = center / total
+            const tensor  = new ort.Tensor('float32', input, [1, 1, 28, 28])
+            const results = await session.run({ [session.inputNames[0]]: tensor })
+            const logits  = Array.from(results[session.outputNames[0]].data as Float32Array)
 
-            const sc = new Array(10).fill(0)
-            sc[0] = (1 - centerR * 3) + (aspect > 0.55 && aspect < 0.9 ? 0.5 : -0.3) + (density < 0.35 ? 0.4 : -0.2)
-            sc[1] = (aspect < 0.45 ? 1.2 : -0.5) + (density > 0.5 ? 0.4 : -0.2)
-            sc[2] = (aspect > 0.6 ? 0.3 : -0.1)  + (topR < 0.55 ? 0.3 : 0) + 0.2
-            sc[3] = (leftR < 0.48 ? 0.4 : -0.1)  + (aspect > 0.5 ? 0.2 : 0) + 0.15
-            sc[4] = (leftR > 0.5  ? 0.3 : -0.1)  + (aspect > 0.55 ? 0.2 : 0) + 0.1
-            sc[5] = (topR > 0.5   ? 0.3 : 0)     + 0.15
-            sc[6] = (topR < 0.5   ? 0.35 : 0)    + (centerR > 0.08 ? 0.25 : 0)
-            sc[7] = (topR > 0.55  ? 0.4 : -0.1)  + (leftR < 0.5 ? 0.2 : 0)
-            sc[8] = (Math.abs(topR - 0.5) < 0.12 ? 0.3 : -0.1) + (density > 0.45 ? 0.3 : -0.1) + (centerR > 0.12 ? 0.3 : 0)
-            sc[9] = (topR > 0.5   ? 0.3 : 0)     + (aspect < 0.65 ? 0.25 : 0)
-
-            for (let i = 0; i < 10; i++) {
-                sc[i] += Math.sin(total * 0.037 + i * 1.3) * 0.12
-                sc[i]  = Math.max(0.01, sc[i])
-            }
-
-            const T    = 1.6
-            const exps = sc.map((s: number) => Math.exp(s * T))
-            const sum  = exps.reduce((a: number, b: number) => a + b, 0)
-            const p    = exps.map((e: number) => e / sum) as number[]
-            const top  = p.indexOf(Math.max(...p))
+            // Softmax
+            const maxL = Math.max(...logits)
+            const exps = logits.map(v => Math.exp(v - maxL))
+            const sum  = exps.reduce((a, b) => a + b, 0)
+            const p    = exps.map(e => e / sum)
 
             setProbs(p)
-            setTopDigit(top)
+            setTopDigit(p.indexOf(Math.max(...p)))
         }
 
-        // ── Mouse events ──────────────────────────────────────
-        const onMouseDown = (e: MouseEvent) => {
+        const onMouseDown  = (e: MouseEvent) => {
             drawing = true
             const pt = getPoint(e); lastX = pt.x; lastY = pt.y
         }
-        const onMouseMove = (e: MouseEvent) => {
-            if (!drawing) return
-            const { x, y } = getPoint(e)
-            drawStroke(x, y)
-        }
-        const onMouseUp   = () => { if (drawing) { drawing = false; predict() } }
+        const onMouseMove  = (e: MouseEvent) => { if (drawing) { const { x, y } = getPoint(e); drawStroke(x, y) } }
+        const onMouseUp    = () => { if (drawing) { drawing = false; predict() } }
         const onMouseLeave = () => { if (drawing) { drawing = false; predict() } }
 
-        // ── Touch events ──────────────────────────────────────
         const onTouchStart = (e: TouchEvent) => {
             e.preventDefault()
             drawing = true
             const pt = getPoint(e); lastX = pt.x; lastY = pt.y
         }
-        const onTouchMove = (e: TouchEvent) => {
-            e.preventDefault()
-            if (!drawing) return
-            const { x, y } = getPoint(e)
-            drawStroke(x, y)
-        }
-        const onTouchEnd = () => { drawing = false; predict() }
+        const onTouchMove  = (e: TouchEvent) => { e.preventDefault(); if (drawing) { const { x, y } = getPoint(e); drawStroke(x, y) } }
+        const onTouchEnd   = () => { drawing = false; predict() }
 
         canvas.addEventListener('mousedown',  onMouseDown)
         canvas.addEventListener('mousemove',  onMouseMove)

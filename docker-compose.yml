@@ -1,0 +1,20 @@
+networks:
+  proxy:
+    external: true
+
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: portfolio
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.portfolio.rule=Host(`portfolio.pol-mattis.com`)
+      - traefik.http.routers.portfolio.entrypoints=websecure
+      - traefik.http.routers.portfolio.tls.certresolver=le
+      - traefik.http.services.portfolio.loadbalancer.server.port=5173
+      - traefik.docker.network=proxy

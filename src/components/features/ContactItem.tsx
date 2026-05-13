@@ -1,6 +1,6 @@
 interface ContactItemProps {
     label: string
-    value: string
+    value: string[]
 }
 
 export default function ContactItem({label, value}: ContactItemProps) {
